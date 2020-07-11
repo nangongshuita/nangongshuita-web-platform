@@ -1,0 +1,52 @@
+@charset "utf-8";
+#logo{
+	height: 60px;
+}
+.header_elements{  /*header_elements指的是头部一的元素*/
+	margin-top: 5px;
+}
+a{
+	color:dimgray;
+}
+a:hover{
+	text-decoration: none;
+}
+#glyphicon-user{ /*登录注册后面的那个默认图标*/
+	margin-top: 8px;
+}
+#glyphicon-flag{ /* 语言选择后面的旗子图标*/
+	margin-top: 8px;
+}
+.header-text .active{  /*header-text指的是头部的字 active指的是被选中的*/
+	color:steelblue;
+	font-weight: bolder;
+}
+.header-text{
+	display: inline;
+}
+.container{
+	margin-bottom: 10px;
+}
+.nav{
+	background-color:aliceblue;
+}
+.nav-white{
+		background-color: white;
+	}
+@media(min-width: 768px) and (max-width: 992px){
+	#glyphicon-user{
+		display: none;
+	}
+	#glyphicon-flag{
+		display: none;
+	}
+	.header_elements{
+		font-size: smaller;
+	}
+	.header_elements input{
+		font-size: smaller;
+	}
+}
+@media(max-width:768px){
+	
+}
