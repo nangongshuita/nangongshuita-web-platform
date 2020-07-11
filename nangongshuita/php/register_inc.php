@@ -11,28 +11,36 @@ if (isset($_POST['register'])) {
 
     // 如果以下为空，显示错误
     if (empty($username) || empty($email) || empty($password) || empty($passwordRep)) {
-        header("Location: register_inc.php?error=empty_fields&name=".$username."&mail=".$email);
+        // 当输入信息错误时，显示alert消息，点击ok后返回register页面
+        echo "<script>alert('表格不能为空，请重试'); window.location.href = '../index/register.html';</script>";
+        // header("Location: register_inc.php?error=empty_fields&name=".$username."&mail=".$email);
         exit();
     }
     // 如果邮箱不合格，显示错误
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: register_inc.php?error=invalid_mailname");
+        // 当输入信息错误时，显示alert消息，点击ok后返回register页面
+        echo "<script>alert('邮箱不合格，请重试'); window.location.href = '../index/register.html';</script>";
+        // header("Location: register_inc.php?error=invalid_mailname");
         exit();
     }
     // 如果邮箱不合格，显示错误
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: register_inc.php?error=invalid_mail&name=".$username);
+        // 当输入信息错误时，显示alert消息，点击ok后返回register页面
+        echo "<script>alert('邮箱不合格，请重试'); window.location.href = '../index/register.html';</script>";
+        // header("Location: register_inc.php?error=invalid_mail&name=".$username);
         exit();
     }
     // 如果昵称不合格，显示错误
     else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: register_inc.php?error=invalid_name&mail=".$email);
+        // 当输入信息错误时，显示alert消息，点击ok后返回register页面
+        echo "<script>alert('无效昵称，请重试'); window.location.href = '../index/register.html';</script>";
+        // header("Location: register_inc.php?error=invalid_name&mail=".$email);
         exit();
     }
     // 如果密码和再次密码不同，显示错误
     else if ($password !== $passwordRep) {
-        // 当密码输入错误时，显示alert消息，点击ok后返回register页面
-        echo "<script>alert('密码与确认密码不同，请再输入正确密码'); window.location.href = '../index/register.html';</script>";
+        // 当输入信息错误时，显示alert消息，点击ok后返回register页面
+        echo "<script>alert('密码与确认密码不同，请重试'); window.location.href = '../index/register.html';</script>";
         // header("Location: register_inc.php?error=password_check_name=".$username."&mail=".$email);
         exit();
     }
