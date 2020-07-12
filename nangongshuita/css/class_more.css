@@ -1,0 +1,13 @@
+@charset "utf-8";
+.class_more{
+		margin-top: 20px;
+		border: 1px solid #D9E2E9;
+	}
+	.class_more_title{
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.class_more_p{
+		text-indent: 24px;
+		padding-bottom: 30px;
+	}
