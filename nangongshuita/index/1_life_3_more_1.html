@@ -1,0 +1,228 @@
+<?php
+
+	session_start();
+
+?>
+
+
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>南宫水塔-留学生服务平台</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" type="text/css" href="../css/class_more.css">
+
+	<!-- 添加alert如果用户未登录 -->
+
+	<script src="../js/notif.js"></script>
+
+
+
+	<style>
+
+	
+
+	</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!--头部一-------------------------------------------------------------------------------------------------->
+
+	<div class="container">
+
+		<div class="row">
+
+			<!--网页logo-->
+
+			<div class="col-lg-7 col-md-5 col-sm-6 col-xs-4">
+
+				<img src="../img/logo.jpg" id="logo" alt="logo">
+
+			</div>
+
+			<!--搜索框search---><!---
+
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 header_elements">
+
+				<form class="navbar-form" action="" >
+
+					<div class="input-group ">
+
+						<input type="text" class="form-control" placeholder="Search for...">
+
+						<span class="input-group-btn">
+
+							<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+
+						</span>
+
+					</div>
+
+				</form>
+
+			</div>-->
+
+			<!--登录注册按钮login-->
+
+			<div class="col-lg-2 col-md-3 col-sm-2  header_elements">
+
+				<?php
+
+				if (isset($_SESSION['uId'])) {
+
+					echo '<a class="btn btn-primary" href="../php/logout_inc.php" role="button" id="glyphicon-user">退出</a>';
+
+					echo "<a style='color: steelblue; font-weight: bold;'> Hi, ".$_SESSION['uName']."</a>";
+
+				}
+
+				else {
+
+					echo '<button type="button" class="btn btn-primary" id="glyphicon-user"><span class="glyphicon glyphicon-user"></span></button>';
+
+					echo '<a href="../index/login.html"> 登录</a> / <a href="../index/register.html">注册</a></p>';
+
+				}
+
+				?>
+
+			</div>
+
+			<!-- <div class="col-lg-2 col-md-3 col-sm-2  header_elements">
+
+				<button class="btn btn-primary" id="glyphicon-user"><span class="glyphicon glyphicon-user"></span></button>
+
+				<p class="header-text"><a href="">登录</a> / <a href="">注册</a></p>
+
+			</div> -->
+
+			<!--语言选择按钮language--->	
+
+			<div class="col-lg-3 col-md-4 col-sm-4  header_elements">
+
+				<button class="btn btn-primary" id="glyphicon-flag"><span class="glyphicon glyphicon-flag"></span></button>
+
+				<p class="header-text"><a href="" class="active">中文</a> / <a href="">English</a> / <a href="">Français</a></p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+<!--头部二-------------------------------------------------------------------------------------------------->
+
+	<div class="container">
+
+		<div class="row">
+
+			<ul class="nav nav-pills nav-justified">
+
+				<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
+
+				<li class="active"><a href="2_Application.html"><span class="glyphicon glyphicon-phone-alt"></span> 留学生一站式生活服务平台</a></li>
+
+				<li><a href="2_Application.html"><span class="glyphicon glyphicon-send"></span> 留学生申请资讯平台</a></li>
+
+				<li><a href="3_OrganizeActivity.html"><span class="glyphicon glyphicon-transfer"></span> 留学生线下活动协办平台</a></li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<hr>
+
+<!--头部三--------------------------------------------------------------------------------------------->
+
+	<div class="container">
+
+		<div class="row">
+
+			<ul class="nav nav-pills nav-justified">
+
+				<li><a href="1_life.html"><span class=""></span>课程查询</a></li>
+
+				<li><a href="1_life_2.html"><span class=""></span>生活社区</a></li>
+
+				<li class="active"><a href="1_life_3.html"><span class=""></span>知识学堂</a></li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+<!-------------------------------------------------------------------------------------------------------->
+	<div class="container">
+		<div class="class_more">
+			<div class="row">
+				<h1 class="class_more_title">南宫水塔--中华文化通识课</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10 class_more_p">
+					<p>【常见问题】<br>Q：本课程适合什么水平的学生学习？<br>
+					A：HSK4级及以上相应水平的留学生。<br>
+					Q：学完整套通识课程需要多长时间？<br>
+					A：预计十二周。<br>
+					</p><p>
+					本课程是针对外国学生的中国文化课程，课程适用于来华留学生、孔子学院学生及其他海外汉语学习者，也适用于对中国文化感兴趣的学习者。课程选取了中国传统文化中最具代表性的内容，用大量的图片、视频和简洁的语言向留学生介绍中国文化。希望带领学习者感受中国社会、了解中国人、有助于留学生更好的融入中国社会，感受中国的独特魅力。<br></p>					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
