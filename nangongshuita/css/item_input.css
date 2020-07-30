@@ -1,4 +1,4 @@
-/* Full-width input fields */
+/* 全角输入字段 */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -8,7 +8,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
   }
   
-  /* Set a style for all buttons */
+  /* 为所有按钮设置样式 */
   .itembtn {
     background-color: #4CAF50;
     color: white;
@@ -23,7 +23,7 @@ input[type=text], input[type=password] {
     opacity: 0.8;
   }
   
-  /* Extra styles for the cancel button */
+  /* 取消按钮的其他样式 */
   .cancelbtn {
     width: auto;
     border: none;
@@ -32,7 +32,7 @@ input[type=text], input[type=password] {
     background-color: #f44336;
   }
   
-  /* Center the image and position the close button */
+  /* 将图像居中并放置“关闭”按钮 */
   .img-container {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -53,37 +53,37 @@ input[type=text], input[type=password] {
     padding-top: 16px;
   }
   
-  /* The Modal (background) */
+  /* 模态（背景） */
   .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
   }
   
-  /* Modal Content/Box */
+  /* 模态内容/框 */
   .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
   }
   
   .modal_more-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
   }
 
-  /* The Close Button (x) */
+  /* 关闭按钮（x） */
   .close {
     position: absolute;
     right: 25px;
@@ -99,7 +99,7 @@ input[type=text], input[type=password] {
     cursor: pointer;
   }
 
-  /* Add Zoom Animation */
+  /* 添加缩放动画 */
   .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
@@ -115,7 +115,7 @@ input[type=text], input[type=password] {
     to {transform: scale(1)}
   }
   
-  /* Change styles for span and cancel button on extra small screens */
+  /* 更改超小屏幕上的“范围”和“取消”按钮的样式 */
   @media screen and (max-width: 300px) {
     span.psw {
        display: block;
