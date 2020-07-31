@@ -16,7 +16,8 @@ function setMessages($connection) {
 // 获取个人说说
 function getMessages($connection) {
 
-    $sql = "SELECT * FROM messages";
+    // 使用 [DESC] 最新的说说展示第一 
+    $sql = "SELECT * FROM messages ORDER BY cdate DESC";
     $result = $connection->query($sql);
 
     while ($row = $result->fetch_assoc()) {
@@ -35,7 +36,7 @@ function getMessages($connection) {
                     // 删除评论按钮
                     echo "<form class='delete-form' method='POST' action='".delMessages($connection)."'>
                         <input type='hidden' name='cid' value='".$row['cid']."'>
-                        <button class='btn btn-primary' name='msgDel'>删除</button> 
+                        <button class='btn btn-danger' name='msgDel'>删除</button> 
                     </form><hr>";
                 }
             }
