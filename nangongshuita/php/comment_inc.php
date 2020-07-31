@@ -16,7 +16,8 @@ function setComment($connection) {
 // 获取所有评论
 function getComment($connection) {
 
-    $sql = "SELECT * FROM comment";
+    // 使用 [DESC] 最新的评论展示第一 
+    $sql = "SELECT * FROM comment ORDER BY pdate DESC";
     $result = $connection->query($sql);
 
     while ($row = $result->fetch_assoc()) {
@@ -36,7 +37,7 @@ function getComment($connection) {
                     // 删除评论按钮
                     echo "<form class='delete-form' method='POST' action='".delComment($connection)."'>
                         <input type='hidden' name='cid' value='".$row['pid']."'>
-                        <button class='btn btn-primary' name='msgDel'>删除</button> 
+                        <button class='btn btn-danger' name='msgDel'>删除</button> 
                     </form><hr>";
                 }
                 else {
