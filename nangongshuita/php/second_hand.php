@@ -75,15 +75,15 @@ if (isset($_POST['submit'])) {
                 header("Location: ../index/1_life_2_3.html?upload_success");
             }
             else {
-                echo "图片太大，图片不能超过50MB";
+            	echo "<script>alert('图片不能超过50MB，请重试'); window.location.href = '../index/1_life_2_3.html';</script>";
             }
         }
         else {
-            echo "上传图片时出错，请重试";
+            echo "<script>alert('上传图片时出错，请重试'); window.location.href = '../index/1_life_2_3.html';</script>";
         }
     }
     else {
-        echo "仅支持(.png, .gif, .jpg, .jpeg)，请重试";
+        echo "<script>alert('仅支持(.jpg, .jpeg, .png, .gif)，请重试'); window.location.href = '../index/1_life_2_3.html';</script>";
     }
 }
 
@@ -183,7 +183,7 @@ function delItem($connection) {
         $sql = "DELETE FROM secondhand WHERE itemID='$iid'";
         $result = $connection->query($sql);
                 
-        echo("<script>location.href = '../index/1_life_2_3.html';</script>");
+        echo("<script>location.href = '../index/1_life_2_3.html?success=item_deleted_$iid';</script>");
     }
 }
 
