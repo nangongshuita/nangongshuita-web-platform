@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	date_default_timezone_set('Asia/Shanghai');
+	include '../php/second_hand.php';
+	include '../php/upload_profile_img.php';
+	include '../php/db_helper.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +26,8 @@
 
 	<script src="../js/image_slider.js"></script>
 	<link rel="stylesheet" href="../css/slider.css">
+	<!-- 头像框设计 -->
+	<link rel="stylesheet" href="../css/profile_avatar.css">
 
 	<style>
 		.container{
@@ -79,11 +85,21 @@
 				-->
 				<?php
 				if (isset($_SESSION['uId'])) {
-					echo '<a class="btn btn-primary" href="../php/logout_inc.php" role="button" id="glyphicon-user">退出</a>';
+					echo '<div class="dropdown" style="display: inline-block;">';
+					getAvatar($connection);
+					echo '</a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel" style="padding: 6px">
+							<a style="font-weight: bold; color: greenyellow; padding: 6px;" href="../index/upload_profile_img.html">头像</a>
+							<hr style="margin: 5px;">
+							<a style="font-weight: bold; color: greenyellow; padding: 6px;" href="?wait=on_progress">会员中心</a>
+							<hr style="margin: 5px;">
+							<a style="font-weight: bold; color: red; padding: 6px;" href="../php/logout_inc.php">退出</a>
+						</ul>
+					</div>';
 					echo "<a style='color: steelblue; font-weight: bold;'> Hi, ".$_SESSION['uName']."</a>";
 				}
 				else {
-					echo '<button type="button" class="btn btn-primary" id="glyphicon-user"><span class="glyphicon glyphicon-user"></span></button>';
+					echo '<img src="../uploaded/profile_image/default.png" alt="Avatar" class="profile-avatar">';
 					echo '<a href="../index/login.html"> 登录</a> / <a href="../index/register.html">注册</a></p>';
 				}
 				?>
