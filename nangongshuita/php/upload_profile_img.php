@@ -28,12 +28,13 @@ include_once 'db_helper.php';
                     $avatar_uniqid = "Avatar_".$userID."_".$date->format('YmdHis').".".$avatar_actual_ext;
                     $dir = '../uploaded/profile_image/'.$avatar_uniqid;
     
+                    // $query = "UPDATE useravatar SET avatarImg='$avatar_name', avatarName='$avatar_uniqid', userID='$userID' WHERE userID='$userID'";
                     $query = "INSERT INTO useravatar (avatarImg, avatarName, userID) VALUES ('$avatar_name', '$avatar_uniqid', '$userID')";
                     mysqli_query($connection, $query);
                     move_uploaded_file($avatar_tmp, $dir);
-                    $sql = "UPDATE useravatar SET status=0 WHERE userID='$userID'";
+                    $sql = "UPDATE useravatar SET avatarImg='$avatar_name', avatarName='$avatar_uniqid', userID='$userID', status=0 WHERE userID='$userID'";
                     $result = mysqli_query($connection, $sql);
-                    header("Location: ../index/1_life_2_3.html?upload_avatar_success");
+                    header("Location: ../index/1_life_2_3.html?update_avatar_success");
                 }
                 else {
                     echo "<script>alert('图片不能超过50MB，请重试'); window.location.href = '../index/1_life_2_3.html';</script>";
@@ -49,35 +50,28 @@ include_once 'db_helper.php';
     }
 
     function getAvatar($connection) {
-        $sql = "SELECT * FROM useravatar";
+        $sql = "SELECT * FROM users";
         $result = mysqli_query($connection, $sql);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            if (mysqli_num_rows($result) > 0) {
-                echo '<img id="dLabel" src="../uploaded/profile_image/'.$row['avatarName'].'" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-            } 
-            else if (empty($result)) {
-                echo '<img id="dLabel" src="../uploaded/profile_image/default.png" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-            }   
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $uid = $row['id'];
+                $sqlImg = "SELECT * FROM useravatar WHERE userID='$uid'";
+                $resultImg = mysqli_query($connection, $sqlImg);
+
+                $rowImg = mysqli_fetch_array($resultImg, MYSQLI_ASSOC);
+                if (isset($_SESSION['uId'])) {
+                    if ($_SESSION['uId'] == $rowImg['userID']) {
+                        echo '<img id="dLabel" src="../uploaded/profile_image/'.$rowImg['avatarName'].'" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                    }
+                    elseif ($rowImg['userID'] == 0) {
+                        echo '<img id="dLabel" src="../uploaded/profile_image/default.png" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                    }
+                }
+                else {
+                    echo '<img id="dLabel" src="../uploaded/profile_image/default.png" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                }
+            }
         }
-        // $sql = "SELECT * FROM users";
-        // $result = mysqli_query($connection, $sql);
-
-        // if (mysqli_num_rows($result) > 0) {
-        //     while ($row = mysqli_fetch_assoc($result)) {
-        //         $uid = $row['id'];
-        //         $sqlImg = "SELECT * FROM useravatar WHERE userID='$uid'";
-        //         $resultImg = mysqli_query($connection, $sqlImg);
-
-        //         while ($rowImg = mysqli_fetch_assoc($resultImg)) {
-        //             if ($rowImg['status'] == 0) {
-        //                 echo '<img id="dLabel" src="../uploaded/profile_image/'.$rowImg['avatarName'].'" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-        //             }
-        //             else {
-        //                 echo '<img id="dLabel" src="../uploaded/profile_image/default.png" alt="Avatar" class="profile-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-        //             }
-        //         }
-        //     }
-        // }
     }
 ?>
