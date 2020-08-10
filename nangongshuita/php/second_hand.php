@@ -180,10 +180,23 @@ function delItem($connection) {
     if (isset($_POST['delItem'])) {
         $iid = $_POST['iid'];
 
+        $file_loc = "SELECT * FROM secondhand WHERE itemID='$iid'";
+        $get_loc = $connection->query($file_loc);
+
         $sql = "DELETE FROM secondhand WHERE itemID='$iid'";
         $result = $connection->query($sql);
-                
-        echo("<script>location.href = '../index/1_life_2_3.html?success=item_deleted_$iid';</script>");
+
+        while ($row = mysqli_fetch_assoc($get_loc)) {
+            $file = "../uploaded/sell_items/".$row['imgName']."";
+            
+            if (!unlink($file)) {    
+                echo("<script>location.href = '../index/1_life_2_3.html?error=no_item_found';</script>");
+            } 
+            else {
+                echo("<script>location.href = '../index/1_life_2_3.html?error=item_deleted_$iid';</script>");
+            }
+        }
+      
     }
 }
 
